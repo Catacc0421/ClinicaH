@@ -16,8 +16,7 @@ public class PanelControlador {
 
 
     public PanelControlador() {
-        this.clinica = new Clinica(); // Se crea una única instancia de la clase Clinica
-    }
+        this.clinica = Clinica.getInstance();} // Se crea una única instancia de la clase Clinica
 
 
     public void mostrarRegistroPaciente(ActionEvent actionEvent) {

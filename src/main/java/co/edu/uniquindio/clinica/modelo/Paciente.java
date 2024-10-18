@@ -1,5 +1,12 @@
 package co.edu.uniquindio.clinica.modelo;
 
+import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
 public class Paciente {
 
     private String cedula;
