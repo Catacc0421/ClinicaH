@@ -10,7 +10,7 @@ import java.io.IOException;
 public class ClinicaApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ClinicaApplication.class.getResource("/panel.xml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ClinicaApplication.class.getResource("/panel.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
