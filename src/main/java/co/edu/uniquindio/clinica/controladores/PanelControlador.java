@@ -11,9 +11,7 @@ public class PanelControlador {
     @FXML
     private StackPane panelPrincipal;
 
-
     private final Clinica clinica;
-
 
     public PanelControlador() {
         this.clinica = Clinica.getInstance();} // Se crea una única instancia de la clase Clinica
@@ -30,7 +28,6 @@ public class PanelControlador {
 
     public void mostrarListaPacientes(ActionEvent actionEvent) {
         Parent node = cargarPanel("/listaPacientes.fxml");
-
 
         // Se reemplaza el contenido del panel principal
         panelPrincipal.getChildren().setAll(node);
