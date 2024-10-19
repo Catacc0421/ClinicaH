@@ -9,7 +9,6 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 public class Clinica {
 
     private final List<Paciente> pacientes;
