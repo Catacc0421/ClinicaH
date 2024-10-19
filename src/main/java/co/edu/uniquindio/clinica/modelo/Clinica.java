@@ -1,9 +1,13 @@
 package co.edu.uniquindio.clinica.modelo;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
+import co.edu.uniquindio.clinica.modelo.factory.SuscripcionBasica;
 import lombok.*;
 
 @Getter
@@ -32,109 +36,71 @@ public class Clinica {
             return INSTANCIA;
         }
     }
-
-    //Registrar un nuevo paciente
-    public boolean registrarPaciente(String cedula, String nombre, String telefono, String email, String tipoSuscripcion) throws Exception {
-        if (buscarPacientePorCedula(cedula) != null) {
-            throw new Exception("Ya existe un paciente con esta cédula.");
-        }
-        Suscripcion suscripcion = SuscripcionFactory.crearSuscripcion(tipoSuscripcion);
-        if (suscripcion == null) {
-            throw new Exception("Tipo de suscripción no válido.");
-        }
-        Paciente paciente = new Paciente(cedula, nombre, telefono, email, suscripcion);
-        pacientes.add(paciente);
-        return true;
+    public List<Paciente> listarPacientes() {
+        return pacientes;
     }
+    public void registrarPaciente(String nombre, String cedula, String numeroTelefono, String correo, Suscripcion suscripcion) throws Exception {
 
-    //Buscar un paciente por cédula
-    public Paciente buscarPacientePorCedula(String cedula) {
+        Paciente paciente = Paciente.builder()
+                .nombre(nombre)
+                .cedula(cedula)
+                .numeroTelefono(numeroTelefono)
+                .correo(correo)
+                .suscripcion(suscripcion)
+                .build();
+
+        pacientes.add(paciente);
+    }
+    public Paciente buscarPaciente(String cedula) {
         for (Paciente paciente : pacientes) {
             if (paciente.getCedula().equals(cedula)) {
                 return paciente;
             }
         }
         return null;
+    }
+    public ArrayList<String> listarOpciones() {
+        ArrayList<String> suscripciones = new ArrayList<>();
+        suscripciones.add("SUSCRIPCIÓN BÁSICA");
+        suscripciones.add("SUSCRIPCIÓN PREMIUM");
+
+
+        return suscripciones;
+    }
+    //Citas
+    public boolean agendarCita(Cita nuevaCita) {
+        if (validarCita(nuevaCita)) {
+            citas.add(nuevaCita);
+            enviarEmail(nuevaCita);
+            return true;
+        } else {
+            return false; // La cita no se pudo agendar
         }
-
-    // 3. Listar todos los pacientes
-    public List<Paciente> listarPacientes() {
-        return pacientes;
     }
 
-    //Registrar un servicio en la clínica
-    public boolean registrarServicio(String id, String nombre, double precio) throws Exception {
-        if (buscarServicioPorId(id) != null) {
-            throw new Exception("Ya existe un servicio con este ID.");
-        }
-        Servicio servicio = new Servicio(id, nombre, precio);
-        servicios.add(servicio);
-        return true;
-    }
-
-    //Buscar un servicio por ID
-    public Servicio buscarServicioPorId(String id) {
-        for (Servicio servicio : servicios) {
-            if (servicio.getId().equals(id)) {
-                return servicio;
-            }
-        }
-        return null;
-    }
-
-    //Listar servicios disponibles
-    public List<Servicio> getServiciosDisponibles() {
-        return servicios;
-    }
-
-    //Agendar una cita
-    public boolean registrarCita(String idCita, Paciente paciente, Servicio servicio, LocalDateTime fecha) throws Exception {
+    // Método para validar que la cita no se cruce con otras
+    private boolean validarCita(Cita nuevaCita) {
         for (Cita cita : citas) {
-            if (cita.getFecha().equals(fecha)) {
-                throw new Exception("Ya existe una cita en este horario.");
+            if (cita.getFecha().equals(nuevaCita.getFecha())) {
+                return false; // Cita ya agendada en ese horario
             }
         }
-
-        // Crear la cita
-        Cita cita = new Cita(id, fecha, paciente, servicio);
-
-        // Generar la factura con base en la suscripción del paciente
-        Factura factura = paciente.getSuscripcion().generarFacturaCobro(servicio);
-        cita.setFactura(factura);
-
-        // Agregar la cita a la lista
-        citas.add(cita);
-
-        // Simulación del envío de correo (puedes reemplazarlo con la lógica real)
-        enviarEmailConfirmacionCita(paciente, cita);
-
-        return true; // Cita registrada con éxito
+        return true; // No hay conflicto de horarios
     }
 
-    //Cancelar una cita
-    public boolean cancelarCita(String idCita) throws Exception {
-        Cita citaAEliminar = null;
-        for (Cita cita : citas) {
-            if (cita.getId().equals(idCita)) {
-                citaAEliminar = cita;
-                break;
-            }
-        }
-        if (citaAEliminar == null) {
-            throw new Exception("No se encontró la cita con el ID especificado.");
-        }
-        citas.remove(citaAEliminar);
-        return true; // Cita cancelada con éxito
+    // Método para enviar un email (simulado)
+    private void enviarEmail(Cita cita) {
+        String email = "correo_del_paciente@example.com"; // Aquí deberías obtener el correo del paciente
+        String mensaje = String.format("Hola %s,\n\nSu cita ha sido agendada para el %s.\nTotal a pagar: %.2f\n\nGracias.",
+                cita.getPaciente(), cita.getFecha(), cita.getTotal());
+        System.out.println("Enviando email a " + email + ":\n" + mensaje);
+        // Aquí puedes integrar una librería para enviar correos como JavaMail
     }
 
-    //Listar citas programadas
-    public List<Cita> listarCitas() {
-        return citas;
+    // Método para visualizar citas
+    public List<Cita> visualizarCitas() {
+        return new ArrayList<>(citas);
     }
-
-    //Simulación del envío de email de confirmación de cita (esto puedes integrarlo con un servicio real)
-    private void enviarEmailConfirmacionCita(Paciente paciente, Cita cita) {
-
-    }
-
 }
+
+

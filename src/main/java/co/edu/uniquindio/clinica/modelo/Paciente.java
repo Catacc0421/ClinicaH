@@ -7,12 +7,13 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @ToString
+@Builder
 public class Paciente {
 
     private String cedula;
     private String nombre;
-    private String telefono;
-    private String email;
+    private String numeroTelefono;
+    private String correo;
     private Suscripcion suscripcion;
 
 }

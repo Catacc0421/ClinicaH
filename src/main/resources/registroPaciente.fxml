@@ -8,7 +8,7 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f4f4f4;">
+<AnchorPane xmlns:fx="http://javafx.com/fxml" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f4f4f4;" fx:controller="co.edu.uniquindio.clinica.controladores.RegistroPacienteControlador">>
 
     <VBox alignment="CENTER" layoutY="10.0" prefHeight="100.0" prefWidth="800.0" spacing="10">
         <Label text="Registro de Pacientes" style="-fx-font-weight: bold;">
@@ -60,8 +60,8 @@
                 <ComboBox fx:id="suscripcionBox" promptText="Seleccione la suscripción" style="-fx-background-radius: 10;">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Básica"/>
-                            <String fx:value="Premium"/>
+                            <String fx:value="SUSCRIPCIÓN BÁSICA"/>
+                            <String fx:value="SUSCRIPCIÓN PREMIUM"/>
                         </FXCollections>
                     </items>
                 </ComboBox>
