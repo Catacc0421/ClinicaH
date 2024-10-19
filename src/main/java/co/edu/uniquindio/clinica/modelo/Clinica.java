@@ -3,7 +3,6 @@ package co.edu.uniquindio.clinica.modelo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
 import lombok.*;
 
@@ -135,8 +134,7 @@ public class Clinica {
 
     //Simulación del envío de email de confirmación de cita (esto puedes integrarlo con un servicio real)
     private void enviarEmailConfirmacionCita(Paciente paciente, Cita cita) {
-        // Simulación del envío de email, aquí puedes integrar una librería real
-        // Ejemplo con JavaMail o cualquier otra librería
+
     }
 
 }
