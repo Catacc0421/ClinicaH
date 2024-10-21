@@ -38,27 +38,53 @@ public class RegistroPacienteControlador extends AbstractControlador implements 
 
     private Clinica clinica;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        suscripcionBox.setItems( FXCollections.observableList(clinica.listarOpciones()) );
 
-    public void registrarPaciente() {
+
     }
-    private void mostrarAlerta(String mensaje, Alert.AlertType tipo){
+
+    public void anadirPaciente(ActionEvent actionEvent) {
+        try {
+            clinica.registrarPaciente(
+                    nombreField.getText(),
+                    cedulaField.getText(),
+                    telefonoField.getText(),
+                    emailField.getText()
+            );
+            limpiarCampos();
+            mostrarAlerta("Paciente creado con éxito", Alert.AlertType.INFORMATION);
+            limpiarCampos();
+            
+        }catch (Exception ex){
+            mostrarAlerta(ex.getMessage(), Alert.AlertType.ERROR);
+        }
+
+    }
+
+
+    public void cancelarRegistro (ActionEvent actionEvent){
+        }
+
+    public void cerrarVentana (Node node){
+    }
+
+    private void mostrarAlerta (String mensaje, Alert.AlertType tipo){
         Alert alert = new Alert(tipo);
         alert.setTitle("Información");
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.show();
     }
-    public void cerrarVentana(Node node){
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
-    }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        suscripcionBox.setItems( FXCollections.observableList(clinica.listarOpciones()) );
-    }
-
-    public void cancelarRegistro(ActionEvent actionEvent) {
+    /**
+     * Limpia los campos de texto del formulario
+     */
+    private void limpiarCampos () {
+        nombreField.clear();
+        cedulaField.clear();
+        telefonoField.clear();
+        emailField.clear();
     }
 }

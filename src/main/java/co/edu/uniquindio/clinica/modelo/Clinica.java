@@ -1,25 +1,22 @@
 package co.edu.uniquindio.clinica.modelo;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
-import co.edu.uniquindio.clinica.modelo.factory.SuscripcionBasica;
 import lombok.*;
 
 @Getter
 @Setter
 @ToString
+
 public class Clinica {
 
     private final List<Paciente> pacientes;
     private final List<Cita> citas;
     private final List<Servicio> servicios;
     private static Clinica INSTANCIA;
-
 
     private Clinica() {
         this.pacientes = new ArrayList<>();
@@ -35,21 +32,33 @@ public class Clinica {
             return INSTANCIA;
         }
     }
+
     public List<Paciente> listarPacientes() {
         return pacientes;
     }
-    public void registrarPaciente(String nombre, String cedula, String numeroTelefono, String correo, Suscripcion suscripcion) throws Exception {
+    public void registrarPaciente(String nombre, String cedula, String numeroTelefono,
+                                  String correo) throws Exception {
+
+        if(nombre.isEmpty() || nombre.isEmpty() || cedula.isEmpty() || numeroTelefono.isEmpty() || correo.isEmpty()) {
+            throw new Exception("Todos los campos son obligatorios");
+        }
+        if (!esCorreoValido(correo)) {
+            throw new Exception("El formato del correo no es válido");
+        }
+        if (!esNumeroValido(numeroTelefono)) {
+            throw new Exception("El formato del teléfono no es válido, solo puede contener números");
+        }
 
         Paciente paciente = Paciente.builder()
                 .nombre(nombre)
                 .cedula(cedula)
                 .numeroTelefono(numeroTelefono)
                 .correo(correo)
-                .suscripcion(suscripcion)
                 .build();
 
         pacientes.add(paciente);
     }
+
     public Paciente buscarPaciente(String cedula) {
         for (Paciente paciente : pacientes) {
             if (paciente.getCedula().equals(cedula)) {
@@ -66,6 +75,7 @@ public class Clinica {
 
         return suscripciones;
     }
+
     //Citas
     public boolean agendarCita(Cita nuevaCita) {
         if (validarCita(nuevaCita)) {
@@ -77,7 +87,7 @@ public class Clinica {
         }
     }
 
-    // Método para validar que la cita no se cruce con otras
+    //Método para validar que la cita no se cruce con otras
     private boolean validarCita(Cita nuevaCita) {
         for (Cita cita : citas) {
             if (cita.getFecha().equals(nuevaCita.getFecha())) {
@@ -99,6 +109,37 @@ public class Clinica {
     // Método para visualizar citas
     public List<Cita> visualizarCitas() {
         return new ArrayList<>(citas);
+    }
+
+    /**
+     * Verifica que el correo que se ingresó esté en el formato válido
+     * @param correo el correo que se ingresa al formulario
+     * @return retorno
+     */
+    private boolean esCorreoValido(String correo) {
+        // Patrón de regex para correos electrónicos
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(correo);
+        return matcher.matches();
+    }
+
+    private boolean esNumeroValido(String numeroTelefono) {
+        // Verifica si el número tiene exactamente 10 caracteres
+        if (numeroTelefono.length() != 10) {
+            return false;
+        }
+
+        // Verifica si todos los caracteres son dígitos (del 0 al 9)
+        for (int i = 0; i < numeroTelefono.length(); i++) {
+            char c = numeroTelefono.charAt(i);
+            if (c < '0' || c > '9') {
+                return false; // Si encuentra algún carácter que no es dígito, retorna falso
+            }
+        }
+
+        // Si pasa todas las verificaciones, es un número válido
+        return true;
     }
 }
 

@@ -20,11 +20,9 @@ public class PanelControlador {
     public void mostrarRegistroPaciente(ActionEvent actionEvent) {
         Parent node = cargarPanel("/registroPaciente.fxml");
 
-
         // Se reemplaza el contenido del panel principal
         panelPrincipal.getChildren().setAll(node);
     }
-
 
     public void mostrarListaPacientes(ActionEvent actionEvent) {
         Parent node = cargarPanel("/listaPacientes.fxml");
@@ -32,7 +30,6 @@ public class PanelControlador {
         // Se reemplaza el contenido del panel principal
         panelPrincipal.getChildren().setAll(node);
     }
-
 
     public void mostrarRegistroCita(ActionEvent actionEvent) {
         //Completar

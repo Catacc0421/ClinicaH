@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="361.0" prefWidth="465.0" spacing="20" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controlador.RegistroPacienteControlador">
+<VBox alignment="CENTER" prefHeight="361.0" prefWidth="465.0" spacing="20" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controlador.RegistroPacienteControlador">
 
-    <Label text="Agendar Cita">
+    <Label prefHeight="23.0" prefWidth="98.0" text="Crear Cita">
         <font>
             <Font size="20.0" />
         </font>
@@ -16,7 +21,7 @@
 
     <HBox alignment="CENTER" spacing="10">
         <Label prefHeight="18.0" prefWidth="50.0" text="Paciente:" />
-        <TextField fx:id="pacientetxt" prefHeight="26.0" prefWidth="186.0">
+        <TextField fx:id="pacientetxt" prefHeight="0.0" prefWidth="186.0">
             <HBox.margin>
                 <Insets />
             </HBox.margin></TextField>
@@ -55,6 +60,6 @@
     </HBox>
 
 
-    <Button text="Confirmar Cita"/>
+    <Button text="Confirmar Cita" />
 
 </VBox>
