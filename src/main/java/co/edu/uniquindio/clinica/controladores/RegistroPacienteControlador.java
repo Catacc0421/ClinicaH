@@ -4,6 +4,7 @@ import co.edu.uniquindio.clinica.modelo.Clinica;
 import co.edu.uniquindio.clinica.modelo.Paciente;
 import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -56,5 +57,8 @@ public class RegistroPacienteControlador extends AbstractControlador implements 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         suscripcionBox.setItems( FXCollections.observableList(clinica.listarOpciones()) );
+    }
+
+    public void cancelarRegistro(ActionEvent actionEvent) {
     }
 }

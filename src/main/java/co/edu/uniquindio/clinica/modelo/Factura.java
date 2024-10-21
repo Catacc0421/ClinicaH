@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @ToString
-@Builder
+
 public class Factura {
 
     private LocalDateTime fecha;

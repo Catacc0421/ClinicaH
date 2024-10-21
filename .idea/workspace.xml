@@ -6,12 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="ad65e4f4-0994-47c8-9184-6889355ef41f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/crearCita.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/crearCita.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/ClinicaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/ClinicaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/controladores/RegistroPacienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/controladores/RegistroPacienteControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/Factura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/Factura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/registroPaciente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/registroPaciente.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -85,6 +96,7 @@
       <updated>1729105677177</updated>
       <workItem from="1729213712187" duration="3686000" />
       <workItem from="1729217455917" duration="1512000" />
+      <workItem from="1729522028435" duration="2482000" />
     </task>
     <servers />
   </component>
