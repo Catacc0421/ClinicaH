@@ -45,7 +45,7 @@ public class RegistroPacienteControlador extends AbstractControlador implements 
 
     }
 
-    public void anadirPaciente(ActionEvent actionEvent) {
+    public void registrarPaciente(ActionEvent actionEvent) {
         try {
             clinica.registrarPaciente(
                     nombreField.getText(),

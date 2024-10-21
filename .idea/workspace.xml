@@ -7,13 +7,6 @@
     <list default="true" id="ad65e4f4-0994-47c8-9184-6889355ef41f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/controladores/PanelControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/controladores/PanelControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/controladores/RegistroPacienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/controladores/RegistroPacienteControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/Clinica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/Clinica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/utils/EnvioEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/utils/EnvioEmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/crearCita.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/crearCita.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/listaPacientes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/listaPacientes.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/panel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/registroPaciente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/registroPaciente.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +92,7 @@
       <updated>1729105677177</updated>
       <workItem from="1729213712187" duration="3686000" />
       <workItem from="1729217455917" duration="1512000" />
-      <workItem from="1729522028435" duration="11022000" />
+      <workItem from="1729522028435" duration="11658000" />
     </task>
     <servers />
   </component>
