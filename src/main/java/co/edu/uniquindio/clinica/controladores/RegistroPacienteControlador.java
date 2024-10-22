@@ -4,6 +4,7 @@ import co.edu.uniquindio.clinica.modelo.Clinica;
 import co.edu.uniquindio.clinica.modelo.Paciente;
 import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -71,6 +72,7 @@ public class RegistroPacienteControlador extends AbstractControlador{ //implemen
 
     public void cerrarVentana (Node node){
     }
+
 
     private void mostrarAlerta (String mensaje, Alert.AlertType tipo){
         Alert alert = new Alert(tipo);
