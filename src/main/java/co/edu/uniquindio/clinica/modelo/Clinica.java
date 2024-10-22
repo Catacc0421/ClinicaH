@@ -87,6 +87,11 @@ public class Clinica {
         }
     }
 
+    public void crearCita(){
+
+    }
+
+
     //Método para validar que la cita no se cruce con otras
     private boolean validarCita(Cita nuevaCita) {
         for (Cita cita : citas) {
@@ -96,6 +101,8 @@ public class Clinica {
         }
         return true; // No hay conflicto de horarios
     }
+
+
 
     // Método para enviar un email (simulado)
     private void enviarEmail(Cita cita) {

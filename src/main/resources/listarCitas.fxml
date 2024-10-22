@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label alignment="CENTER" prefHeight="35.0" prefWidth="421.0" text="Lista Citas" textFill="#0f0f0f">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tablaCitas" prefHeight="366.0" prefWidth="421.0">
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      spacing="20.0"
+      fx:controller="co.edu.uniquindio.clinica.controladores.ListarCitasControlador">
+
+
+    <Label text="Lista de Citas" textFill="#0f0f0f">
+        <font>
+            <Font size="20.0"/>
+        </font>
+    </Label>
+
+
+    <TableView fx:id="tablaCitas" VBox.vgrow="ALWAYS" >
         <columns>
-          <TableColumn fx:id="colId" prefWidth="56.0" text="id" />
-          <TableColumn fx:id="colFecha" prefWidth="71.0" text="Fecha" />
-            <TableColumn fx:id="colNombrePaciente" prefWidth="132.0" text="Nombre Paciente" />
-            <TableColumn fx:id="colServicio" minWidth="0.0" prefWidth="82.0" text="Servicio" />
-            <TableColumn fx:id="colTotal" prefWidth="79.0" text="Total" />
+            <TableColumn text="Id" />
+            <TableColumn text="Fecha" />
+            <TableColumn text="NombrePaciente"  />
+            <TableColumn text="Servicio" />
+            <TableColumn text="Total" />
         </columns>
-      </TableView>
-   </children>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+
+
 </VBox>
+
+

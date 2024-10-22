@@ -14,10 +14,10 @@ public class ListarCitasControlador extends AbstractControlador {
     private TableView<Paciente> tablaCitas;
 
     @FXML
-    private TableColumn<Paciente, String> colFecha;
+    private TableColumn<Paciente, String> colId;
 
     @FXML
-    private TableColumn<Paciente, String> colId;
+    private TableColumn<Paciente, String> colFecha;
 
     @FXML
     private TableColumn<Paciente, String> colNombrePaciente;
