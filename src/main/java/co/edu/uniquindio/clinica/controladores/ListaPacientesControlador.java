@@ -14,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ListaPacientesControlador extends AbstractControlador implements Initializable {
+public class ListaPacientesControlador extends AbstractControlador {
     @FXML
     private TableView<Paciente> tablaPacientes;
 
@@ -51,18 +51,5 @@ public class ListaPacientesControlador extends AbstractControlador implements In
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
-        colCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula()));
-        colTelefono.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNumeroTelefono()));
-        colEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
-        colSuscripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSuscripcion().toString()));
-
-        pacientesObservable = FXCollections.observableArrayList();
-
-        // Cargar datos de pacientes cuando la ventana se inicializa
-        cargarPacientes();
-    }
 
 }

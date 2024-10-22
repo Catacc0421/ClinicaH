@@ -6,7 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+
+import java.io.IOException;
+
 public class PanelControlador {
     @FXML
     private StackPane panelPrincipal;
@@ -18,40 +24,39 @@ public class PanelControlador {
     } // Se crea una única instancia de la clase Clinica
 
 
-    public void mostrarRegistroPaciente(ActionEvent actionEvent) {
-        Parent node = cargarPanel("/registroPaciente.fxml");
-
-        // Se reemplaza el contenido del panel principal
-        panelPrincipal.getChildren().setAll(node);
+    @FXML
+    private void mostrarRegistroPaciente() {
+        cargarContenido("/registroPaciente.fxml");
     }
 
-    public void mostrarListaPacientes(ActionEvent actionEvent) {
-        Parent node = cargarPanel("/listaPacientes.fxml");
-
-        // Se reemplaza el contenido del panel principal
-        panelPrincipal.getChildren().setAll(node);
+    // Método que carga la lista de pacientes
+    @FXML
+    private void mostrarListaPacientes() {
+        cargarContenido("/listaPacientes.fxml");
     }
 
-    public void mostrarRegistroCita(ActionEvent actionEvent) {
-        //Completar
+    // Método que carga la creación de citas
+    @FXML
+    private void mostrarRegistroCita() {
+        cargarContenido("/crearCita.fxml");
     }
 
-
-    public void mostrarListaCitas(ActionEvent actionEvent) {
-        //Completar
+    // Método que carga la lista de citas
+    @FXML
+    private void mostrarListaCitas() {
+        cargarContenido("/listarCitas.fxml");
     }
 
-
-    private Parent cargarPanel(String fxmlFile) {
+    // Método general para cargar cualquier archivo FXML dentro del StackPane
+    private void cargarContenido(String fxmlFile) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Parent node = loader.load();
-            ((AbstractControlador)loader.getController()).inicializarClinica(clinica);
-            return node;
-        } catch (Exception e) {
+            // Cargar el contenido FXML
+            Pane nuevoContenido = FXMLLoader.load(getClass().getResource(fxmlFile));
+            // Reemplazar el contenido del panel principal
+            panelPrincipal.getChildren().setAll(nuevoContenido);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
     }
 
 

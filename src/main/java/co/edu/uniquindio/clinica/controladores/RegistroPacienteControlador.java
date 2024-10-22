@@ -41,8 +41,6 @@ public class RegistroPacienteControlador extends AbstractControlador implements 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         suscripcionBox.setItems( FXCollections.observableList(clinica.listarOpciones()) );
-
-
     }
 
     public void registrarPaciente(ActionEvent actionEvent) {
