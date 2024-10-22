@@ -1,4 +1,4 @@
 package co.edu.uniquindio.clinica.controladores;
 
-public class CrearCitaControlador {
+public class CrearCitaControlador extends AbstractControlador {
 }

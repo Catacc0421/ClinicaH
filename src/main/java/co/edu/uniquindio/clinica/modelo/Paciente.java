@@ -5,9 +5,9 @@ import lombok.*;
 
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @ToString
+@Builder
 
 public class Paciente {
 

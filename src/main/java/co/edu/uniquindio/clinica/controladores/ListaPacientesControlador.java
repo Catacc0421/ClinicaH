@@ -34,6 +34,7 @@ public class ListaPacientesControlador extends AbstractControlador {
     private TableColumn<Paciente, String> colSuscripcion;
 
     private Clinica clinica;
+
     private ObservableList<Paciente> pacientesObservable;
 
     // Constructor o método de inicialización donde se pasa la instancia de la clínica

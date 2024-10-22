@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 @ToString
 
-public class RegistroPacienteControlador extends AbstractControlador implements Initializable {
+public class RegistroPacienteControlador extends AbstractControlador{ //implements Initializable {
 
     @FXML
     private TextField nombreField;
@@ -38,10 +38,14 @@ public class RegistroPacienteControlador extends AbstractControlador implements 
 
     private Clinica clinica;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        suscripcionBox.setItems( FXCollections.observableList(clinica.listarOpciones()) );
+    public RegistroPacienteControlador(){
+        clinica = Clinica.getInstance();
     }
+
+    //@Override
+    //public void initialize(URL location, ResourceBundle resources) {
+    //      suscripcionBox.setItems( FXCollections.observableList(clinica.listarOpciones()) );
+    //}
 
     public void registrarPaciente(ActionEvent actionEvent) {
         try {
