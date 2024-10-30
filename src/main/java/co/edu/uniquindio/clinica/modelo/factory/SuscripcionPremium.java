@@ -2,6 +2,7 @@ package co.edu.uniquindio.clinica.modelo.factory;
 
 import co.edu.uniquindio.clinica.modelo.Factura;
 import co.edu.uniquindio.clinica.modelo.Servicio;
+import co.edu.uniquindio.clinica.modelo.enums.TipoSuscripcion;
 
 
 import java.time.LocalDateTime;
@@ -11,6 +12,11 @@ import java.util.List;
 
 public class SuscripcionPremium implements Suscripcion {
 
+
+    @Override
+    public TipoSuscripcion getNombreSuscripcion() {
+        return TipoSuscripcion.PREMIUM;
+    }
 
     @Override
     public List<Servicio> getServiciosDisponibles() {

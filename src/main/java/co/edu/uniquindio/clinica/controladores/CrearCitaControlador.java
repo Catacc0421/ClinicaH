@@ -9,7 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-public class CrearCitaControlador extends AbstractControlador {
+public class CrearCitaControlador {
 
     @FXML
     private DatePicker fechaCita;

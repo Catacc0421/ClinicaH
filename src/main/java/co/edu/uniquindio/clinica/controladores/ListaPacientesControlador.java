@@ -14,7 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ListaPacientesControlador extends AbstractControlador {
+public class ListaPacientesControlador implements  Initializable {
     @FXML
     private TableView<Paciente> tablaPacientes;
 
@@ -35,22 +35,26 @@ public class ListaPacientesControlador extends AbstractControlador {
 
     private Clinica clinica;
 
-    private ObservableList<Paciente> pacientesObservable;
 
-    // Constructor o método de inicialización donde se pasa la instancia de la clínica
-    public void setClinica(Clinica clinica) {
-        this.clinica = clinica;
-        cargarPacientes();
+    public ListaPacientesControlador(){
+        this.clinica = Clinica.getInstance();
     }
-        // Vinculamos las columnas de la tabla con los atributos de Paciente
-
 
     public void cargarPacientes() {
-        if (clinica != null) {
-            ObservableList<Paciente> listaObservable = FXCollections.observableArrayList(clinica.listarPacientes());
-            tablaPacientes.setItems(listaObservable);
-        }
+        System.out.println(clinica.getPacientes());
+        ObservableList<Paciente> listaObservable = FXCollections.observableArrayList(clinica.listarPacientes());
+        tablaPacientes.setItems(listaObservable);
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula()));
+        colNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        colTelefono.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNumeroTelefono()));
+        colEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
+        colSuscripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSuscripcion().getNombreSuscripcion().getNombre()));
 
+        cargarPacientes();
+
+    }
 }

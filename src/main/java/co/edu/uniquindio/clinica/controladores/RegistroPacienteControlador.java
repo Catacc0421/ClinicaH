@@ -2,6 +2,7 @@ package co.edu.uniquindio.clinica.controladores;
 
 import co.edu.uniquindio.clinica.modelo.Clinica;
 import co.edu.uniquindio.clinica.modelo.Paciente;
+import co.edu.uniquindio.clinica.modelo.enums.TipoSuscripcion;
 import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +21,7 @@ import java.util.ResourceBundle;
 
 @ToString
 
-public class RegistroPacienteControlador extends AbstractControlador{ //implements Initializable {
+public class RegistroPacienteControlador implements Initializable {
 
     @FXML
     private TextField nombreField;
@@ -43,29 +44,27 @@ public class RegistroPacienteControlador extends AbstractControlador{ //implemen
         clinica = Clinica.getInstance();
     }
 
-    //@Override
-    //public void initialize(URL location, ResourceBundle resources) {
-    //      suscripcionBox.setItems( FXCollections.observableList(clinica.listarOpciones()) );
-    //}
-
-    public void registrarPaciente(ActionEvent actionEvent) {
-        try {
-            clinica.registrarPaciente(
-                    nombreField.getText(),
-                    cedulaField.getText(),
-                    telefonoField.getText(),
-                    emailField.getText()
-            );
-            limpiarCampos();
-            mostrarAlerta("Paciente creado con éxito", Alert.AlertType.INFORMATION);
-            limpiarCampos();
-            
-        }catch (Exception ex){
-            mostrarAlerta(ex.getMessage(), Alert.AlertType.ERROR);
-        }
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        suscripcionBox.setItems( FXCollections.observableList(clinica.listarOpciones()) );
     }
 
+    public void registrarPaciente(ActionEvent actionEvent) {
+
+        try {
+            String identificacion = cedulaField.getText();
+            String nombre = nombreField.getText();
+            String telefono = telefonoField.getText();
+            String correo = emailField.getText();
+            TipoSuscripcion suscripcion = TipoSuscripcion.valueOf(suscripcionBox.getValue().replace(" ", ""));
+
+            clinica.registrarPaciente(identificacion, nombre, telefono, correo, suscripcion);
+            limpiarCampos();
+            mostrarAlerta("Paciente registrado correctamente", Alert.AlertType.INFORMATION);
+        }catch (Exception e){
+            mostrarAlerta(e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
 
     public void cancelarRegistro (ActionEvent actionEvent){
         }

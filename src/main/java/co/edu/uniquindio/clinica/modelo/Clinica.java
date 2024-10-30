@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import co.edu.uniquindio.clinica.modelo.enums.TipoSuscripcion;
+import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
+import co.edu.uniquindio.clinica.modelo.factory.SuscripcionBasica;
+import co.edu.uniquindio.clinica.modelo.factory.SuscripcionPremium;
 import lombok.*;
 
 @Getter
@@ -27,17 +31,16 @@ public class Clinica {
     //Singleton
     public static Clinica getInstance() {
         if(INSTANCIA == null) {
-            return new Clinica();
-        }else{
-            return INSTANCIA;
+            INSTANCIA = new Clinica();
         }
+        return INSTANCIA;
     }
 
     public List<Paciente> listarPacientes() {
         return pacientes;
     }
     public void registrarPaciente(String nombre, String cedula, String numeroTelefono,
-                                  String correo) throws Exception {
+                                  String correo, TipoSuscripcion suscripcion) throws Exception {
 
         if(nombre.isEmpty() || nombre.isEmpty() || cedula.isEmpty() || numeroTelefono.isEmpty() || correo.isEmpty()) {
             throw new Exception("Todos los campos son obligatorios");
@@ -49,11 +52,17 @@ public class Clinica {
             throw new Exception("El formato del teléfono no es válido, solo puede contener números");
         }
 
+        Suscripcion suscripcionPaciente = switch (suscripcion) {
+            case BASICA -> new SuscripcionBasica();
+            case PREMIUM -> new SuscripcionPremium();
+        };
+
         Paciente paciente = Paciente.builder()
                 .nombre(nombre)
                 .cedula(cedula)
                 .numeroTelefono(numeroTelefono)
                 .correo(correo)
+                .suscripcion(suscripcionPaciente)
                 .build();
 
         pacientes.add(paciente);
@@ -69,8 +78,8 @@ public class Clinica {
     }
     public ArrayList<String> listarOpciones() {
         ArrayList<String> suscripciones = new ArrayList<>();
-        suscripciones.add("SUSCRIPCIÓN BÁSICA");
-        suscripciones.add("SUSCRIPCIÓN PREMIUM");
+        suscripciones.add("BASICA");
+        suscripciones.add("PREMIUM");
 
 
         return suscripciones;

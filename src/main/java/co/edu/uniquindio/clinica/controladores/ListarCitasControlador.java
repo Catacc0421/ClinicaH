@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class ListarCitasControlador extends AbstractControlador {
+public class ListarCitasControlador {
 
     @FXML
     private TableView<Paciente> tablaCitas;
@@ -32,11 +32,6 @@ public class ListarCitasControlador extends AbstractControlador {
 
     private ObservableList<Paciente> pacientesObservable;
 
-    // Constructor o método de inicialización donde se pasa la instancia de la clínica
-    public void setClinica(Clinica clinica) {
-        this.clinica = clinica;
-        cargarPacientes();
-    }
     // Vinculamos las columnas de la tabla con los atributos de Paciente
 
 
